@@ -1,0 +1,20 @@
+{
+  "system": {
+    "battery": 85,                // 电量百分比 (int)
+    "status": "online"            // 设备状态 (string)
+  },
+  "sensors": {
+    "distance_cm": 120,           // 超声波距离 (int)
+    "fall_alert": false,          // 跌倒传感器状态 (bool)
+    "gps": {                      // 如果没GPS模块，填 0
+      "lat": 31.2304,//GPS 纬度
+      "lng": 121.4737//GPS 经度
+    }
+  },
+  "streams": {
+    // 重点：不需要做识别，只需要把采集到的画面/声音推成 HTTP 流
+    // 比如用 mjpg-streamer 或 ffmpeg 推出来的地址
+    "video_url": "http://192.168.1.xxx:8080/?action=stream",
+    "audio_url": "http://192.168.1.xxx:8081/audio.wav"
+  }
+}

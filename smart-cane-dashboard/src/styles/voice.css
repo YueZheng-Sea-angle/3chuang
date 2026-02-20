@@ -1,0 +1,79 @@
+/* ===== Voice Control Page ===== */
+.voice-page { display: flex; flex-direction: column; gap: 20px; }
+.voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.recorder-area {
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
+  padding: 10px 0;
+}
+
+/* Waveform */
+.waveform-container {
+  display: flex; align-items: center; justify-content: center;
+  gap: 3px; height: 80px; width: 100%;
+  padding: 0 20px;
+}
+.wave-bar {
+  width: 6px; min-height: 4px; border-radius: 3px;
+  background: rgba(255,255,255,0.2);
+  transition: height 0.1s;
+}
+
+/* Record Button */
+.record-btn-area { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.record-btn {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-violet), var(--accent-indigo));
+  display: flex; align-items: center; justify-content: center;
+  color: white; border: none; cursor: pointer;
+  transition: all 0.3s;
+}
+.record-btn:hover { transform: scale(1.05); }
+.record-btn.recording {
+  background: linear-gradient(135deg, var(--danger), #f87171);
+}
+.record-btn-inner {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+}
+.record-hint { font-size: 13px; color: var(--text-muted); }
+
+/* ASR Info */
+.asr-info { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.asr-info-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--text-muted);
+  padding: 8px 12px; border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.02);
+}
+
+/* ASR Results */
+.result-count {
+  font-size: 11px; color: var(--text-muted);
+  padding: 2px 8px; border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+}
+.asr-list { display: flex; flex-direction: column; gap: 6px; max-height: 400px; overflow-y: auto; }
+.asr-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 14px; border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.02);
+  border-left: 3px solid var(--text-muted);
+}
+.asr-item.command { border-left-color: var(--accent-violet); }
+.asr-item-icon { color: var(--text-muted); margin-top: 2px; flex-shrink: 0; }
+.asr-item.command .asr-item-icon { color: var(--accent-violet); }
+.asr-item-content { flex: 1; min-width: 0; }
+.asr-text { font-size: 14px; font-weight: 500; }
+.asr-meta { display: flex; gap: 12px; margin-top: 4px; }
+.asr-conf, .asr-time { font-size: 11px; color: var(--text-muted); }
+.command-badge {
+  padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600;
+  background: rgba(139,92,246,0.15); color: var(--accent-violet);
+  align-self: center; flex-shrink: 0;
+}
+
+@media (max-width: 1200px) {
+  .voice-grid { grid-template-columns: 1fr; }
+}

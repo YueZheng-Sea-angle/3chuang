@@ -1,0 +1,126 @@
+/* ===== Obstacle Page ===== */
+.obstacle-page { display: flex; flex-direction: column; gap: 20px; }
+.obstacle-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 20px; }
+
+/* Distance Monitor */
+.distance-display {
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+}
+.distance-meter { width: 100%; }
+.meter-bar {
+  width: 100%; height: 8px; border-radius: 4px;
+  background: rgba(255,255,255,0.06);
+  position: relative; overflow: hidden;
+}
+.meter-fill {
+  height: 100%; border-radius: 4px;
+  transition: width 0.5s ease;
+}
+.meter-fill.safe { background: linear-gradient(90deg, var(--safe), #34d399); }
+.meter-fill.warning { background: linear-gradient(90deg, var(--warning), #fbbf24); }
+.meter-fill.danger { background: linear-gradient(90deg, var(--danger), #f87171); }
+.meter-markers {
+  display: flex; justify-content: space-between;
+  margin-top: 6px; font-size: 10px; color: var(--text-muted);
+}
+.distance-status {
+  text-align: center; padding: 10px; border-radius: var(--radius-sm);
+  font-size: 13px; font-weight: 600; margin-top: 8px;
+}
+.distance-status.safe { background: rgba(16,185,129,0.1); color: var(--safe); }
+.distance-status.warning { background: rgba(245,158,11,0.1); color: var(--warning); }
+.distance-status.danger { background: rgba(239,68,68,0.1); color: var(--danger); }
+
+/* Video Stream */
+.video-container { display: flex; flex-direction: column; gap: 12px; }
+.video-frame {
+  position: relative; width: 100%;
+  aspect-ratio: 16/10;
+  background: rgba(0,0,0,0.4);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+.video-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; color: var(--text-muted);
+}
+.video-placeholder p { font-size: 14px; font-weight: 500; }
+.video-placeholder small { font-size: 11px; opacity: 0.6; }
+.stream-url { font-family: monospace; font-size: 10px; opacity: 0.4; margin-top: 4px; }
+
+/* Detection boxes */
+.detection-box {
+  position: absolute;
+  border: 2px solid var(--warning);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.detection-box.selected { border-color: var(--accent-indigo); box-shadow: 0 0 12px rgba(99,102,241,0.3); }
+.det-label {
+  position: absolute; top: -20px; left: 0;
+  padding: 2px 6px; border-radius: 3px;
+  background: rgba(245,158,11,0.9);
+  color: #000; font-size: 10px; font-weight: 600; white-space: nowrap;
+}
+
+/* ML Controls */
+.ml-controls { display: flex; gap: 8px; }
+.ml-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-color);
+  font-size: 12px; color: var(--text-secondary);
+  transition: all 0.2s;
+}
+.ml-btn:hover { background: rgba(255,255,255,0.1); color: var(--text-primary); }
+
+.ml-badge {
+  display: flex; align-items: center; gap: 4px;
+  padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: 600;
+}
+.ml-badge.ready { background: rgba(16,185,129,0.15); color: var(--safe); }
+.ml-badge.loading { background: rgba(245,158,11,0.15); color: var(--warning); }
+.ml-badge.not-loaded { background: rgba(100,116,139,0.15); color: var(--text-muted); }
+.ml-status-row { display: flex; align-items: center; }
+
+/* Detection Table */
+.detection-table { display: flex; flex-direction: column; }
+.det-table-header, .det-table-row {
+  display: grid; grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
+  gap: 12px; padding: 10px 14px; align-items: center;
+}
+.det-table-header {
+  font-size: 11px; font-weight: 600;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border-color);
+}
+.det-table-row {
+  font-size: 13px; border-radius: var(--radius-sm);
+  cursor: pointer; transition: background 0.2s;
+}
+.det-table-row.selected { background: rgba(99,102,241,0.1); }
+.det-type { display: flex; align-items: center; gap: 6px; font-weight: 500; }
+.det-dist { font-weight: 600; }
+.det-dist.danger { color: var(--danger); }
+.det-dist.warning { color: var(--warning); }
+.det-pos { font-size: 12px; color: var(--text-muted); font-family: monospace; }
+
+.conf-bar {
+  width: 60px; height: 4px; border-radius: 2px;
+  background: rgba(255,255,255,0.06); overflow: hidden;
+  display: inline-block; vertical-align: middle; margin-right: 6px;
+}
+.conf-fill {
+  height: 100%; border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan));
+}
+.det-conf { display: flex; align-items: center; font-size: 12px; color: var(--text-secondary); }
+
+@media (max-width: 1200px) {
+  .obstacle-grid { grid-template-columns: 1fr; }
+}

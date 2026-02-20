@@ -1,0 +1,14 @@
+{
+    "system": {
+      "battery": 85,//剩余电量 (%)
+      "status": "online"//系统运行状态
+    },
+    "sensors": {
+      "distance_cm": 120,//超声波前方测距数值 (cm)
+      "fall_alert": false,//跌倒检测状态 (true / false)
+      "gps": { 
+            "lat": 0, //GPS 纬度
+            "lng": 0 //GPS 经度
+            }
+    }
+  }
